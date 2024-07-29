@@ -1,3 +1,5 @@
+//Funcion para calcular el precio total en un carrito, palicando un descuento
+
 function calcularTotal() {
     let numeroDeProductos;
     let total = 0;
@@ -21,19 +23,19 @@ function calcularTotal() {
             }
         } while (isNaN(precioProducto) || precioProducto <= 0);
 
-        total += precioProducto;
+        total = total + precioProducto;
     }
 
     // Aplicar descuento
-    let descuento = parseFloat(prompt('Ingresa el descuento (%):'));
+    let descuento = parseFloat(prompt("Ingresa el descuento (%):"));
     
     if (isNaN(descuento) || descuento < 0) {
-        alert('Por favor, ingresa un descuento válido.');
+        alert("Por favor, ingresa un descuento válido.");
     } else if (descuento > 0) {
         total = total - (total * (descuento / 100));
     }
 
-    alert('El costo total es: ' + total.toFixed(2));
+    alert('El costo total es: ' + total.toFixed(2));  //aca aplico el (toFixed(2) para que el numero sea mas conciso)
 }
 
 // Ejecución del simulador
