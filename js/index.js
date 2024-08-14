@@ -2,12 +2,13 @@
 
 /* El programa va a pedir productos y necesita los datos: Nombre, precio y cantidad */
 
-function pedirDatosAlUsuario (){
+function pedirDatosAlUsuario (){            //Esta funcion es la que va encargarse de pedir los datos de los productos
     let datosUsuario = {
         nombre: "",
         precio: 0,
         cantidad: 0
     };
+
     // Validar la cantidad de productos
     do {
         datosUsuario.nombre =prompt ("Ingrese nombre producto");
@@ -33,6 +34,16 @@ function pedirDatosAlUsuario (){
     return datosUsuario;
 }
 
+function aplicarDescuento(total, cantidadProductos) {            //Esta funcion me aplica un descuento al total
+    
+    let descuento = 0;
+    
+    if (cantidadProductos >= 5) {
+        descuento = 25; // 25% de descuento si hay más de 5 productos
+    }
+    
+    return total - (total * (descuento / 100));
+}
 
 
 function calcularTotal() {
@@ -54,25 +65,19 @@ function calcularTotal() {
         }
     } 
 
-    let reducer = function (total, producto) {
-        return (producto.precio * producto.cantidad)+total
-    };
-    console.log(productos)
-    console.log(productos.reduce(reducer,0))
+    let total = productos.reduce((total, producto) => {
+        return (producto.precio * producto.cantidad) + total;
+    }, 0);
     
-
-
-
-    // Aplicar descuento
-    /* let descuento = parseFloat(prompt("Ingresa el descuento (%):"));
+    let cantidadTotalProductos = productos.reduce((total, producto) => {
+        return producto.cantidad + total;
+    }, 0);
     
-    if (isNaN(descuento) || descuento < 0) {
-        alert("Por favor, ingresa un descuento válido.");
-    } else if (descuento > 0) {
-        total = total - (total * (descuento / 100));
-    }
+    total = aplicarDescuento(total, cantidadTotalProductos);
 
-    alert('El costo total es: ' + total.toFixed(2));  //aca aplico el (toFixed(2) para que el numero sea mas conciso) */
+    console.log("Productos:", productos);
+    console.log("Total con descuento:", total.toFixed(2));
+    
 }
 
 // Ejecución del simulador
