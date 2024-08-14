@@ -1,33 +1,70 @@
-//Funcion para calcular el precio total en un carrito, palicando un descuento
+//Funcion para calcular el precio total en un carrito, aplicando un descuento
 
-function calcularTotal() {
-    let numeroDeProductos;
-    let total = 0;
+/* El programa va a pedir productos y necesita los datos: Nombre, precio y cantidad */
 
+function pedirDatosAlUsuario (){
+    let datosUsuario = {
+        nombre: "",
+        precio: 0,
+        cantidad: 0
+    };
     // Validar la cantidad de productos
     do {
-        numeroDeProductos = parseInt(prompt("Ingresa cantidad de productos:"));
-        if (isNaN(numeroDeProductos) || numeroDeProductos <= 0) {
-            alert("Por favor ingrese un número de productos válido.");
+        datosUsuario.nombre =prompt ("Ingrese nombre producto");
+        if (!datosUsuario.nombre || datosUsuario.nombre == "") {
+            alert("Por favor ingrese un prodcuto");
         }
-    } while (isNaN(numeroDeProductos) || numeroDeProductos <= 0);
+    } while (!datosUsuario.nombre || datosUsuario.nombre == "");
 
-    // Validar el precio de cada producto
-    for (let i = 0; i < numeroDeProductos; i++) {
-        let precioProducto;
+    do {
+        datosUsuario.precio = parseInt(prompt("Ingrese precio"));
+        if (isNaN(datosUsuario.precio) || datosUsuario.precio <= 0) {
+            alert("Por favor ingrese un precio de producto válido.");
+        }
+    } while (isNaN(datosUsuario.precio) || datosUsuario.precio <= 0);
 
-        do {
-            precioProducto = parseFloat(prompt("Ingresa el precio del producto " + (i + 1) + ":"));
-            if (isNaN(precioProducto) || precioProducto <= 0) {
-                alert("Por favor, ingresa un precio válido.");
-            }
-        } while (isNaN(precioProducto) || precioProducto <= 0);
+    do {
+        datosUsuario.cantidad = parseInt(prompt("Ingrese la cantidad de productos"));
+        if (isNaN(datosUsuario.cantidad) || datosUsuario.cantidad <= 0) {
+            alert("Por favor ingrese una cantidad de productos válido.");
+        }
+    } while (isNaN(datosUsuario.cantidad) || datosUsuario.cantidad <= 0);
 
-        total = total + precioProducto;
-    }
+    return datosUsuario;
+}
+
+
+
+function calcularTotal() {
+    
+    let productos = [];
+
+    let masProductos = true;  //Comienza mi funcion con el while
+
+    
+    while (masProductos){
+        let producto = pedirDatosAlUsuario();
+        productos.push(producto);
+
+        let respuesta = prompt("¿Quiere agregar otro producto?");
+        if (respuesta == "si") {
+            masProductos = true;
+        } else {
+            masProductos = false;
+        }
+    } 
+
+    let reducer = function (total, producto) {
+        return (producto.precio * producto.cantidad)+total
+    };
+    console.log(productos)
+    console.log(productos.reduce(reducer,0))
+    
+
+
 
     // Aplicar descuento
-    let descuento = parseFloat(prompt("Ingresa el descuento (%):"));
+    /* let descuento = parseFloat(prompt("Ingresa el descuento (%):"));
     
     if (isNaN(descuento) || descuento < 0) {
         alert("Por favor, ingresa un descuento válido.");
@@ -35,7 +72,7 @@ function calcularTotal() {
         total = total - (total * (descuento / 100));
     }
 
-    alert('El costo total es: ' + total.toFixed(2));  //aca aplico el (toFixed(2) para que el numero sea mas conciso)
+    alert('El costo total es: ' + total.toFixed(2));  //aca aplico el (toFixed(2) para que el numero sea mas conciso) */
 }
 
 // Ejecución del simulador
