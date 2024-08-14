@@ -1,5 +1,3 @@
-
-
 //Funcion para calcular el precio total en un carrito, aplicando un descuento
 
 /* El programa va a pedir productos y necesita los datos: Nombre, precio y cantidad */
@@ -67,25 +65,30 @@ function calcularTotal() {
         }
     } 
 
-    function reductor(total, producto) {                        //Aca tengo la funcion para sumar el precio de los objetos * su cantidad 
+    function acumuladorDePrecio(total, producto) {                        //Aca tengo la funcion para sumar el precio de los objetos * su cantidad 
         return (producto.precio * producto.cantidad) + total;
     }
     
-    let total = productos.reduce(reductor, 0);                 //En esta variable guardo el precio reducido a uno solo para cada objeto
-
-
+    let total = productos.reduce(acumuladorDePrecio, 0);                 //En esta variable guardo el precio reducido a uno solo para cada objeto
     
-    //En esta variable voy a guaradr una funcion para sumar el precio de cada obejto * su cantidad, por cada elemento dentro del array productos
-    let cantidadTotalProductos = productos.reduce((total, producto) => {
-        return producto.cantidad + total;
-    }, 0);
     
-    total = aplicarDescuento(total, cantidadTotalProductos);   //Aca le digo a total que use la funcion aplicar descuento al precio total 
+    //En esta variable voy a usar una funcion (reduce) que recibe una funcion que toma como primer argunemnto lo que devolvio la funcion anterior y como segundo argumento el elemento del array
+    function acumuladorDeProductos(cantidad, producto) {
+        return producto.cantidad + cantidad;
+    }
 
-    console.log("Productos:", productos);
-    alert("Total con descuento: " + total.toFixed(2));
-
+    let totalDeProductos = productos.reduce(acumuladorDeProductos, 0);
     
+    let totalConDescuento = aplicarDescuento(total, totalDeProductos);   //Aca le digo a total que use la funcion aplicar descuento al precio total 
+
+    // Actualizar el HTML con los resultados
+    document.getElementById('nombre').innerHTML = "Productos: " + productos.map(p => p.nombre).join(", ");
+    document.getElementById('cantidad').innerHTML = "Cantidad total: " + totalDeProductos;
+    document.getElementById('precio').innerHTML = "Precio total: " + total.toFixed(2);
+    //Cuando el precio no tiene descuento no se muestra el precio con descuento
+    if (total!=totalConDescuento) {
+        document.getElementById('totalConDescuento').innerHTML = "Total con descuento: " + totalConDescuento.toFixed(2);
+    }
 }
 
 

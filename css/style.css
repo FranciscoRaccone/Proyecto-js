@@ -5,3 +5,12 @@ body{
     text-align: center;
     background-color: whitesmoke;
 }
+
+main div{
+    margin: 50px;
+}
+
+.inputs{
+    display: inline-block;
+    
+}
