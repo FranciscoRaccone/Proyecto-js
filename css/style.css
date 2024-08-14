@@ -1,3 +1,7 @@
 body{
-    background-color: black;
+    flex: 1; /* Ocupa todo el espacio disponible */
+    text-align: left; /* Alinea el texto a la izquierda */
+    padding-right: 20px; /* Espacio a la derecha para separar del lado derecho */
+    text-align: center;
+    background-color: whitesmoke;
 }

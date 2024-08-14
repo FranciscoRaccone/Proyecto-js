@@ -1,9 +1,11 @@
+
+
 //Funcion para calcular el precio total en un carrito, aplicando un descuento
 
 /* El programa va a pedir productos y necesita los datos: Nombre, precio y cantidad */
 
 function pedirDatosAlUsuario (){            //Esta funcion es la que va encargarse de pedir los datos de los productos
-    let datosUsuario = {
+    let datosUsuario = {                  //Aca voy a crear los objetos
         nombre: "",
         precio: 0,
         cantidad: 0
@@ -65,20 +67,25 @@ function calcularTotal() {
         }
     } 
 
-    let total = productos.reduce((total, producto) => {
+    function reductor(total, producto) {                        //Aca tengo la funcion para sumar el precio de los objetos * su cantidad 
         return (producto.precio * producto.cantidad) + total;
-    }, 0);
+    }
     
+    let total = productos.reduce(reductor, 0);                 //En esta variable guardo el precio reducido a uno solo para cada objeto
+
+
+    
+    //En esta variable voy a guaradr una funcion para sumar el precio de cada obejto * su cantidad, por cada elemento dentro del array productos
     let cantidadTotalProductos = productos.reduce((total, producto) => {
         return producto.cantidad + total;
     }, 0);
     
-    total = aplicarDescuento(total, cantidadTotalProductos);
+    total = aplicarDescuento(total, cantidadTotalProductos);   //Aca le digo a total que use la funcion aplicar descuento al precio total 
 
     console.log("Productos:", productos);
-    console.log("Total con descuento:", total.toFixed(2));
+    alert("Total con descuento: " + total.toFixed(2));
+
     
 }
 
-// Ejecución del simulador
-calcularTotal();
+
