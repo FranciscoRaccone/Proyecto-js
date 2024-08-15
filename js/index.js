@@ -57,7 +57,7 @@ function calcularTotal() {
         let producto = pedirDatosAlUsuario();
         productos.push(producto);
 
-        let respuesta = prompt("¿Quiere agregar otro producto?");
+        let respuesta = prompt("¿Quiere agregar otro producto? Si/No");
         if (respuesta == "si") {
             masProductos = true;
         } else {
