@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const productoDiv = document.createElement('div');
             productoDiv.innerHTML = `
                 <p>Nombre: ${producto.nombre} - Precio: $${producto.precio}</p>
-                <button onclick="addToCart(${producto.id})" class="button_grey" >Agregar al Carrito</button>
+                
             `;
             productList.appendChild(productoDiv);  //Limpiar cualquier contenido previo en el contenedor de productos
         });

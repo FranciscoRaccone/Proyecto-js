@@ -2,7 +2,7 @@
 
 /* El programa va a pedir productos y necesita los datos: Nombre, precio y cantidad */
 
-function pedirDatosAlUsuario (){            //Esta funcion es la que va encargarse de pedir los datos de los productos
+function pedirDatosAlUsuario() {            //Esta funcion es la que va encargarse de pedir los datos de los productos
     let datosUsuario = {                  //Aca voy a crear los objetos
         nombre: "",
         precio: 0,
@@ -11,7 +11,7 @@ function pedirDatosAlUsuario (){            //Esta funcion es la que va encargar
 
     // Validar la cantidad de productos
     do {
-        datosUsuario.nombre =prompt ("Ingrese nombre producto");
+        datosUsuario.nombre = prompt("Ingrese nombre producto");
         if (!datosUsuario.nombre || datosUsuario.nombre == "") {
             alert("Por favor ingrese un prodcuto");
         }
@@ -35,25 +35,25 @@ function pedirDatosAlUsuario (){            //Esta funcion es la que va encargar
 }
 
 function aplicarDescuento(total, cantidadProductos) {            //Esta funcion me aplica un descuento al total
-    
+
     let descuento = 0;
-    
+
     if (cantidadProductos >= 5) {
         descuento = 25; // 25% de descuento si hay más de 5 productos
     }
-    
+
     return total - (total * (descuento / 100));
 }
 
 
 function calcularTotal() {
-    
+
     let productos = [];
 
     let masProductos = true;  //Comienza mi funcion con el while
 
-    
-    while (masProductos){
+
+    while (masProductos) {
         let producto = pedirDatosAlUsuario();
         productos.push(producto);
 
@@ -63,22 +63,22 @@ function calcularTotal() {
         } else {
             masProductos = false;
         }
-    } 
+    }
 
     function acumuladorDePrecio(total, producto) {                        //Aca tengo la funcion para sumar el precio de los objetos * su cantidad 
         return (producto.precio * producto.cantidad) + total;
     }
-    
+
     let total = productos.reduce(acumuladorDePrecio, 0);                 //En esta variable guardo el precio reducido a uno solo para cada objeto
-    
-    
+
+
     //En esta variable voy a usar una funcion (reduce) que recibe una funcion que toma como primer argunemnto lo que devolvio la funcion anterior y como segundo argumento el elemento del array
     function acumuladorDeProductos(cantidad, producto) {
         return producto.cantidad + cantidad;
     }
 
     let totalDeProductos = productos.reduce(acumuladorDeProductos, 0);
-    
+
     let totalConDescuento = aplicarDescuento(total, totalDeProductos);   //Aca le digo a total que use la funcion aplicar descuento al precio total 
 
     // Actualizar el HTML con los resultados
@@ -86,7 +86,7 @@ function calcularTotal() {
     document.getElementById('cantidad').innerHTML = "Cantidad total: " + totalDeProductos;
     document.getElementById('precio').innerHTML = "Precio total: " + total.toFixed(2);
     //Cuando el precio no tiene descuento no se muestra el precio con descuento
-    if (total!=totalConDescuento) {
+    if (total != totalConDescuento) {
         document.getElementById('totalConDescuento').innerHTML = "Total con descuento: " + totalConDescuento.toFixed(2);
     }
 }
