@@ -15,20 +15,20 @@
 
     <main>
 
+        <h1>Carrito de compras</h1>
         <div id="carritoDeCompras">
             <form id="Carro">
-                <input type="text" id="producto" placeholder="Producto">
-                <input type="number" id="precio" placeholder="Precio">
+                <select id="productoSelect">
+                    <option disabled selected>Seleccione un Producto...</option>
+                </select>
                 <input type="number" id="cantidad" placeholder="Cantidad">
-                <input type="submit" value="Send" class="button_grey">
+                <input type="submit" value="Enviar" class="button_grey">
             </form>
         </div>
 
-        <div class="botonera">
-            <button id="eventoUno">Calcular Total</button> <!-- Este boton activa mi "calcularTotal" de mi js -->
-        </div>
         
-        <div id="inputs">                          <!-- Aca van a figurar los reslutados de mis inputs -->
+
+        <div id="inputs"> <!-- Aca van a figurar los reslutados de mis inputs -->
             <h4 id="nombre"></h4>
             <h4 id="cantidad"></h4>
             <h4 id="precio"></h4>
@@ -45,6 +45,9 @@
     <script src="js/html.js"></script>
     <script src="js/index.js"></script>
     <script src="js/storage.js"></script>
+    <script src="js/products.js"></script>
+
+    
 </body>
 
 </html>

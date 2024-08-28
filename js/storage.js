@@ -1,32 +1,62 @@
+const productos = [
+    { id: 1, nombre: "Azucar", precio: 1080 },
+    { id: 2, nombre: "Yerba", precio: 1200 },
+    { id: 3, nombre: "Café", precio: 6000 },
+    { id: 4, nombre: "Miel", precio: 1800 },
+    { id: 5, nombre: "Harina", precio: 800 },
+    { id: 6, nombre: "Pepsi", precio: 2300 },
+]
+
+
+// Elementos del DOM
+let formulario = document.querySelector('#Carro');
+let productoInput = document.getElementById('productoInput');
+let productoSelect = document.getElementById('productoSelect');
+
+let cantidad = document.getElementById('cantidad');
+
+// Llenar el select con todos los productos inicialmente
+function llenarSelect(productosFiltrados = productos) {
+    productoSelect.innerHTML = '<option disabled selected>Seleccione un Producto...</option>'; // Limpiar opciones previas y añadir la opción predeterminada
+    productosFiltrados.forEach(producto => {
+        const option = document.createElement('option');
+        option.value = producto.nombre;
+        option.textContent = producto.nombre;
+        productoSelect.appendChild(option);
+    });
+}
+
+// Llamar a la función para llenar el select inicialmente
+llenarSelect();
+
 
 
 // Evento Submit
-let formulario = document.querySelector('#Carro');
-let nombre = document.getElementById('producto');
-let precio = document.getElementById('precio');
-let cantidad = document.getElementById('cantidad');
-
 formulario.addEventListener("submit", (e) => {
     e.preventDefault(); // Evita el comportamiento por defecto del formulario
 
-    const productoStorage = nombre.value;
-    const precioStorage = precio.value;
-    const cantidadStorage = cantidad.value;
+    const productoSeleccionado = productos.find(p => p.nombre.toLowerCase() === productoSelect.value.toLowerCase());
+    
+    if (productoSeleccionado) {
+        const productoStorage = productoSeleccionado.nombre;
+        const precioStorage = productoSeleccionado.precio;
+        const cantidadStorage = cantidad.value;
 
-    localStorage.setItem("producto", productoStorage);
-    localStorage.setItem("precio", precioStorage);
-    localStorage.setItem("cantidad", cantidadStorage);
+        localStorage.setItem("producto", productoStorage);
+        localStorage.setItem("precio", precioStorage);
+        localStorage.setItem("cantidad", cantidadStorage);
 
-    // Mostrar los datos almacenados en el HTML
-    nombre.innerHTML = localStorage.getItem("producto");
-    precio.innerHTML = localStorage.getItem("precio");
-    cantidad.innerHTML = localStorage.getItem("cantidad");
+        // Mostrar los datos almacenados en el HTML
+        precio.value = localStorage.getItem("precio");
+        cantidad.value = localStorage.getItem("cantidad");
+    } else {
+        alert("Producto no encontrado en la lista.");
+    }
 });
 
 // Mostrar datos guardados al cargar la página
-nombre.innerHTML = localStorage.getItem("producto") || '';
-precio.innerHTML = localStorage.getItem("precio") || '';
-cantidad.innerHTML = localStorage.getItem("cantidad") || '';
+precio.value = localStorage.getItem("precio") || '';
+cantidad.value = localStorage.getItem("cantidad") || '';
 
 // Imprimir todos los elementos de localStorage en la consola
 for (let i = 0; i < localStorage.length; i++) {
@@ -37,28 +67,3 @@ for (let i = 0; i < localStorage.length; i++) {
 
 
 
-
-//Borrar el storage
-const clearLS = document.getElementById("clearLS");
-
-clearLS.addEventListener("click", () => {
-    localStorage.clear();
-    sessionStorage.clear();
-    
-    Swal.fire({
-        title: "Estas seguro?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, borremoslo!"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: "Archivo borrado!",
-                icon: "success"
-            });            
-        }
-        location.reload();
-    });
-});

@@ -1,11 +1,3 @@
-const productos = [
-    { id: 1, nombre: "Azucar", precio: 1080 },
-    { id: 2, nombre: "Yerba", precio: 1200 },
-    { id: 3, nombre: "Café", precio: 6000 },
-    { id: 4, nombre: "Miel", precio: 1800 },
-    { id: 5, nombre: "Harina", precio: 800 },
-    { id: 6, nombre: "Pepsi", precio: 2300 },
-]
 
 let carrito = [];
 
@@ -36,27 +28,17 @@ function addToCart(productoID) {    //Funcion para adicionar elementos al array
 document.addEventListener("DOMContentLoaded", function () {
     function renderizarProductos(productosFiltrados = productos) {
         const productList = document.getElementById('product-list');   //Insertar estos elementos en el DOM bajo el contenedor
-        productList.innerHTML = '';
+        
         productosFiltrados.forEach(producto => {    //Crear dinámicamente elementos HTML para cada producto, incluyendo su nombre, precio, y un botón para agregar al carrito.
             const productoDiv = document.createElement('div');
             productoDiv.innerHTML = `
                 <p>Nombre: ${producto.nombre} - Precio: $${producto.precio}</p>
                 
             `;
-            productList.appendChild(productoDiv);  //Limpiar cualquier contenido previo en el contenedor de productos
+            
         });
     }
     
-
-    //Buscador
-    const buscadorInput = document.getElementById('buscador-input');
-    buscadorInput.addEventListener('input', function () {
-        const textoBusqueda = buscadorInput.value.toLowerCase();
-        const productosFiltrados = productos.filter(producto =>
-            producto.nombre.toLowerCase().includes(textoBusqueda)
-        );
-        renderizarProductos(productosFiltrados);
-    });
 
     renderizarProductos();
 });

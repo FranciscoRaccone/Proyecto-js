@@ -30,3 +30,10 @@ for (const link of enlaces) {
 header.style.backgroundColor = '#c2c2c2';
 
 
+//Borrar el storage
+const clearLS = document.getElementById("clearLS");
+
+clearLS.addEventListener("click", () => {
+    localStorage.clear();
+    sessionStorage.clear();
+});

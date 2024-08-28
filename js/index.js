@@ -93,8 +93,8 @@ function calcularTotal() {
 
 
 //Boton para calcular total en carrito
-const botonCarrito = document.querySelector('#eventoUno');
+/* const botonCarrito = document.querySelector('#eventoUno');
 
 botonCarrito.addEventListener("click", () => {
     calcularTotal();
-});
+}); */
