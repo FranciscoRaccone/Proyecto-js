@@ -1,4 +1,4 @@
-//Barra de navegacion
+// Barra de navegación
 
 const cuerpo = document.body;
 const header = document.querySelector('#header');
@@ -15,7 +15,7 @@ const enlaces = [
         link: "products",
         nombre: "Productos"
     },
-]
+];
 
 header.appendChild(navegacion);
 navegacion.appendChild(nav);
@@ -29,8 +29,7 @@ for (const link of enlaces) {
 }
 header.style.backgroundColor = '#c2c2c2';
 
-
-//Borrar el storage
+// Borrar el storage
 const clearLS = document.getElementById("clearLS");
 
 clearLS.addEventListener("click", () => {

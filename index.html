@@ -9,45 +9,22 @@
 </head>
 
 <body>
-    <header id="header">
-
-    </header>
+    <header id="header"></header>
 
     <main>
-
-        <h1>Carrito de compras</h1>
-        <div id="carritoDeCompras">
-            <form id="Carro">
-                <select id="productoSelect">
-                    <option disabled selected>Seleccione un Producto...</option>
-                </select>
-                <input type="number" id="cantidad" placeholder="Cantidad">
-                <input type="submit" value="Enviar" class="button_grey">
-            </form>
-        </div>
-
-        
-
-        <div id="inputs"> <!-- Aca van a figurar los reslutados de mis inputs -->
-            <h4 id="nombre"></h4>
-            <h4 id="cantidad"></h4>
-            <h4 id="precio"></h4>
-            <h4 id="totalConDescuento"></h4>
-        </div>
+        <h1>Carrito de Compras</h1>
+        <div id="carrito-contenido"></div> <!-- Aquí se listarán los productos -->
         <div>
-            <button class="button_grey" id="clearLS">
-                Borrar Local Storage
-            </button>
+            <button id="vaciarCarrito">Vaciar Carrito</button>
+            <button id="finalizarCompra">Finalizar Compra</button>
         </div>
-
     </main>
 
-    <script src="js/html.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/products.js"></script>
-
-    
+    <script src="js/navigation.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/index.js"></script>
 </body>
 
 </html>

@@ -6,39 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Carrito</title>
+    <title>Productos</title>
 </head>
 
 <body>
-    <header id="header">
-    </header>
-
-
+    <header id="header"></header>
 
     <main id="miMain">
-
-
         <h1 id="titulo">Productos</h1>
         <div class="buscador">
             <input type="text" id="buscador-input" placeholder="Buscar productos...">
         </div>
         <div id="product-list"></div>
-
+        
 
         <div>
-            <button class="button_grey" id="clearLS">
-                Vaciar carrito
-            </button>
+            <button class="button_grey" id="clearLS">Vaciar carrito</button>
         </div>
-
     </main>
 
-    <script src="js/html.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/products.js"></script>
-    <script src="js/storage.js"></script>
-
-
+    <!-- Los scripts deben cargarse en el siguiente orden -->
+    <script src="js/storage.js"></script> <!-- Funciones del localStorage -->
+    <script src="js/products.js"></script> <!-- Muestra productos -->
+    <script src="js/cart.js"></script> <!-- Maneja el carrito de compras -->
+    <script src="js/navigation.js"></script> <!-- Si manejas navegación -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
