@@ -9,47 +9,49 @@ const productos = [
     { id: 6, nombre: "Pepsi", precio: 2300 },
 ];
 
-const formulario = document.querySelector('#Carro');
-const productoSelect = document.getElementById('productoSelect');
-const cantidad = document.getElementById('cantidad');
+document.addEventListener('DOMContentLoaded', function() {
+    const productoSelect = document.getElementById('productoSelect');
+    const formulario = document.querySelector('#Carro');
+    const cantidad = document.getElementById('cantidad');
 
-// Llenar el select con todos los productos
-function llenarSelect() {
-    productoSelect.innerHTML = '<option disabled selected>Seleccione un Producto...</option>';
-    productos.forEach(producto => {
-        const option = document.createElement('option');
-        option.value = producto.nombre;
-        option.textContent = producto.nombre;
-        productoSelect.appendChild(option);
-    });
-}
+    if (productoSelect && formulario) {
+        // Llenar el select con todos los productos
+        function llenarSelect() {
+            productoSelect.innerHTML = '<option disabled selected>Seleccione un Producto...</option>';
+            productos.forEach(producto => {
+                const option = document.createElement('option');
+                option.value = producto.nombre;
+                option.textContent = producto.nombre;
+                productoSelect.appendChild(option);
+            });
+        }
 
-llenarSelect();
+        llenarSelect();
 
-// Evento Submit
-formulario.addEventListener("submit", (e) => {
-    e.preventDefault();
+        // Evento Submit
+        formulario.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-    const productoSeleccionado = productos.find(p => p.nombre.toLowerCase() === productoSelect.value.toLowerCase());
-    
-    if (productoSeleccionado) {
-        const productoStorage = productoSeleccionado.nombre;
-        const precioStorage = productoSeleccionado.precio;
-        const cantidadStorage = cantidad.value;
+            const productoSeleccionado = productos.find(p => p.nombre.toLowerCase() === productoSelect.value.toLowerCase());
+            
+            if (productoSeleccionado) {
+                const productoStorage = productoSeleccionado.nombre;
+                const precioStorage = productoSeleccionado.precio;
+                const cantidadStorage = cantidad.value;
 
-        const carrito = JSON.parse(localStorage.getItem("Cart")) || [];
-        carrito.push({
-            nombre: productoStorage,
-            precio: precioStorage,
-            cantidad: cantidadStorage
+                const carrito = JSON.parse(localStorage.getItem("Cart")) || [];
+                carrito.push({
+                    nombre: productoStorage,
+                    precio: precioStorage,
+                    cantidad: cantidadStorage
+                });
+
+                localStorage.setItem("Cart", JSON.stringify(carrito));
+
+                // Limpiar campos del formulario
+                productoSelect.value = '';
+                cantidad.value = '';
+            } 
         });
-
-        localStorage.setItem("Cart", JSON.stringify(carrito));
-
-        // Limpiar campos del formulario
-        productoSelect.value = '';
-        cantidad.value = '';
-    } else {
-        alert("Producto no encontrado en la lista.");
-    }
+    } 
 });

@@ -1,7 +1,6 @@
-// products.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const productList = document.getElementById('product-list');
+    const buscadorInput = document.getElementById('buscador-input');
     const productos = [
         { id: 1, nombre: "Azúcar", precio: 1080 },
         { id: 2, nombre: "Yerba", precio: 1200 },
@@ -11,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 6, nombre: "Pepsi", precio: 2300 },
     ];
 
-    function renderizarProductos() {
+    function renderizarProductos(productosFiltrados) {
         productList.innerHTML = ''; // Limpiar el contenedor
-        productos.forEach(producto => {
+        productosFiltrados.forEach(producto => {
             const productoDiv = document.createElement('div');
             productoDiv.innerHTML = `
                 <p>Nombre: ${producto.nombre} - Precio: $${producto.precio}</p>
@@ -23,7 +22,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    renderizarProductos();
+    // Función para filtrar productos según la búsqueda
+    function filtrarProductos(textoBusqueda) {
+        return productos.filter(producto =>
+            producto.nombre.toLowerCase().includes(textoBusqueda.toLowerCase())
+        );
+    }
+
+    // Renderizar todos los productos al cargar la página
+    renderizarProductos(productos);
+
+    // Event Listener para el campo de búsqueda
+    buscadorInput.addEventListener('input', function () {
+        const textoBusqueda = buscadorInput.value;
+        const productosFiltrados = filtrarProductos(textoBusqueda);
+        renderizarProductos(productosFiltrados);
+    });
 
     // Definir addToCart para agregar productos al carrito
     window.addToCart = function(productId) {

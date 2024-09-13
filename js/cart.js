@@ -1,7 +1,8 @@
-// cart.js
 
 document.addEventListener('DOMContentLoaded', function() {
     const carritoContenido = document.getElementById('carrito-contenido');
+    const vaciarCarritoBtn = document.getElementById('vaciarCarrito');
+    const finalizarCompraBtn = document.getElementById('finalizarCompra');
 
     function renderizarCarrito() {
         const carrito = JSON.parse(localStorage.getItem('Cart')) || [];
@@ -24,14 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
     renderizarCarrito();
 
     // Evento para vaciar carrito
-    const vaciarCarritoBtn = document.getElementById('vaciarCarrito');
     vaciarCarritoBtn.addEventListener('click', () => {
         localStorage.removeItem('Cart');
         renderizarCarrito();
     });
 
     // Evento para finalizar compra
-    const finalizarCompraBtn = document.getElementById('finalizarCompra');
     finalizarCompraBtn.addEventListener('click', () => {
         alert('Compra finalizada.');
         localStorage.removeItem('Cart');

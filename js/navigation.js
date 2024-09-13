@@ -29,10 +29,17 @@ for (const link of enlaces) {
 }
 header.style.backgroundColor = '#c2c2c2';
 
-// Borrar el storage
-const clearLS = document.getElementById("clearLS");
 
-clearLS.addEventListener("click", () => {
-    localStorage.clear();
-    sessionStorage.clear();
+// Borrar el localStorage y sessionStorage si el botón clearLS existe
+document.addEventListener('DOMContentLoaded', () => {
+    const clearLS = document.getElementById("clearLS");
+
+    if (clearLS) {
+        clearLS.addEventListener("click", () => {
+            localStorage.clear();
+            sessionStorage.clear();
+            console.log("LocalStorage y SessionStorage limpiados");
+            // Aquí puedes agregar código para actualizar la UI después de limpiar el carrito si es necesario
+        });
+    }
 });
