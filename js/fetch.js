@@ -2,8 +2,8 @@ const cardsProd = document.getElementById("cards");
 
 const peticionA = async () => {
     const respuesta = await fetch("/productos.json");
-    const datos = await respuesta.json();
-    const data = await datos;
+    const data = respuesta.json();
+    
 
     for (item of data) {
         const card = document.createElement("div");

@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const productList = document.getElementById('product-list');
     const buscadorInput = document.getElementById('buscador-input');
+    if (productList==null) {
+        console.error("product list null")
+    }
+    if (buscadorInput==null) {
+        console.error("buscador impt null")
+    }
     const productos = [
         { id: 1, nombre: "Azúcar", precio: 1080 },
         { id: 2, nombre: "Yerba", precio: 1200 },
@@ -10,7 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 6, nombre: "Pepsi", precio: 2300 },
     ];
 
-    function renderizarProductos(productosFiltrados) {
+    function renderizarProductos(productosFiltrados) { 
+        if (productList==null) {
+            return;
+        } 
         productList.innerHTML = ''; // Limpiar el contenedor
         productosFiltrados.forEach(producto => {
             const productoDiv = document.createElement('div');
