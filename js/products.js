@@ -1,12 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const productList = document.getElementById('product-list');
     const buscadorInput = document.getElementById('buscador-input');
-    if (productList==null) {
-        console.error("product list null")
-    }
-    if (buscadorInput==null) {
-        console.error("buscador impt null")
-    }
+    // if (productList == null) {
+    //     console.error("product list null")
+    // }
+    // if (buscadorInput == null) {
+    //     console.error("buscador impt null")
+    // }
     const productos = [
         { id: 1, nombre: "Azúcar", precio: 1080 },
         { id: 2, nombre: "Yerba", precio: 1200 },
@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 6, nombre: "Pepsi", precio: 2300 },
     ];
 
-    function renderizarProductos(productosFiltrados) { 
-        if (productList==null) {
+    function renderizarProductos(productosFiltrados) {
+        if (productList == null) {
             return;
-        } 
+        }
         productList.innerHTML = ''; // Limpiar el contenedor
         productosFiltrados.forEach(producto => {
             const productoDiv = document.createElement('div');
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Definir addToCart para agregar productos al carrito
-    window.addToCart = function(productId) {
+    window.addToCart = function (productId) {
         const producto = productos.find(p => p.id === productId);
         if (producto) {
             const carrito = JSON.parse(localStorage.getItem('Cart')) || [];
@@ -58,6 +58,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 precio: producto.precio,
                 cantidad: 1 // Puedes ajustar la cantidad según tus necesidades
             });
+            // Swal.fire({
+            //     position: "top-end",
+            //     icon: "success",
+            //     title: `El ${product.nombre} se agrego al Carrito.!`,
+            //     showConfirmButton: false,
+            //     timer: 3000,
+            //     timerProgressBar: true
+            // });
             localStorage.setItem('Cart', JSON.stringify(carrito));
         }
     };
