@@ -1,0 +1,90 @@
+@import "utilidades/variables";
+
+@import "utilidades/mixin";
+
+body {
+    background-color: #E6E6DD;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 20px; /* Margen a la izquierda */
+    margin-right: 20px; /* Margen a la derecha */
+    margin-bottom: 50px;
+    box-shadow: 20px 15px 20px black;
+    
+    nav {
+        flex-grow: 1; /* El navbar ocupará todo el espacio restante */
+        font-size: 35px;
+        
+        button {
+            margin-right: 50px;
+        }
+        ul {
+            list-style: none; /* Eliminar viñetas de las listas */
+            padding: 0;
+            margin: 15px;
+            display: flex; /* Alinear horizontalmente los elementos de la lista */
+            gap: 20px; /* Espacio entre los enlaces */
+            justify-content: flex-start; /* Centrar los elementos dentro del nav */
+
+            li {
+                padding: 15px;              
+                margin-bottom: 10px; /* Espaciado entre elementos de la lista */
+            }
+            a {
+                color: black; /* Color por defecto del enlace */
+                text-decoration: none; /* Eliminar subrayado si lo deseas */
+            }
+        }
+        
+
+    }
+    
+}
+
+main {
+    h1{
+        @include flex;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+    .button_grey {
+        margin: 10px;
+    }
+    
+}
+
+
+
+footer {
+      
+    @include flex;
+    text-align: center;
+    color: #FAFAFA;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    background-color: #232323; /* Color de fondo del footer */
+    padding: 20px; /* Espaciado interno del footer */
+    
+    .redes li{
+      display: inline-block; /* Los elementos de la lista se muestran en línea */
+      margin: 0 20px; /* Espacio entre los íconos */
+
+    }
+}
+

@@ -9,7 +9,7 @@ const ul = document.createElement('ul');
 const enlaces = [
     {
         link: "index",
-        nombre: "Inicio"
+        nombre: "Carrito"
     },
     {
         link: "products",

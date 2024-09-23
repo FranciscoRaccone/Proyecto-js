@@ -1,17 +1,97 @@
-body{
-    flex: 1; /* Ocupa todo el espacio disponible */
-    text-align: left; /* Alinea el texto a la izquierda */
-    padding-right: 20px; /* Espacio a la derecha para separar del lado derecho */
-    text-align: center;
-    background-color: whitesmoke;
+@charset "UTF-8";
+.tarjetas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 4rem;
+}
+
+.card {
+  align-items: center;
+}
+
+.card img {
+  width: 16rem;
+  padding: 0.5rem;
+}
+
+body {
+  background-color: #E6E6DD;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-    display: flex;
-    align-items: center;
-    margin-left: 20px; /* Margen a la izquierda */
-    margin-right: 20px; /* Margen a la derecha */
-    margin-bottom: 50px;
-    box-shadow: 20px 15px 20px black;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 20px; /* Margen a la izquierda */
+  margin-right: 20px; /* Margen a la derecha */
+  margin-bottom: 50px;
+  box-shadow: 20px 15px 20px black;
+}
+header nav {
+  flex-grow: 1; /* El navbar ocupará todo el espacio restante */
+  font-size: 35px;
+}
+header nav button {
+  margin-right: 50px;
+}
+header nav ul {
+  list-style: none; /* Eliminar viñetas de las listas */
+  padding: 0;
+  margin: 15px;
+  display: flex; /* Alinear horizontalmente los elementos de la lista */
+  gap: 20px; /* Espacio entre los enlaces */
+  justify-content: flex-start; /* Centrar los elementos dentro del nav */
+}
+header nav ul li {
+  padding: 15px;
+  margin-bottom: 10px; /* Espaciado entre elementos de la lista */
+}
+header nav ul a {
+  color: black; /* Color por defecto del enlace */
+  text-decoration: none; /* Eliminar subrayado si lo deseas */
 }
 
+main h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+main div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+main .button_grey {
+  margin: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+  color: #FAFAFA;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 0px;
+  margin-top: 40px;
+  background-color: #232323; /* Color de fondo del footer */
+  padding: 20px; /* Espaciado interno del footer */
+}
+footer .redes li {
+  display: inline-block; /* Los elementos de la lista se muestran en línea */
+  margin: 0 20px; /* Espacio entre los íconos */
+}
+
+/*# sourceMappingURL=style.css.map */
