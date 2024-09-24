@@ -17,6 +17,26 @@
   padding: 0.5rem;
 }
 
+#cart,
+#product-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#product-list > div {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 2rem);
+}
+
 body {
   background-color: #E6E6DD;
   min-height: 100vh;
@@ -81,6 +101,7 @@ footer {
   gap: 15px;
   text-align: center;
   color: #FAFAFA;
+  position: sticky;
   bottom: 0;
   left: 0;
   width: 100%;

@@ -2,6 +2,9 @@
 
 @import "utilidades/mixin";
 
+
+
+
 body {
     background-color: #E6E6DD;
     min-height: 100vh;
@@ -70,9 +73,13 @@ main {
 
 footer {
       
-    @include flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     text-align: center;
     color: #FAFAFA;
+    position: sticky;
     bottom: 0;
     left: 0;
     width: 100%;
